@@ -7,7 +7,7 @@ cook = function(cooking){
 }
 
 cookingEmojis = primalEmoji.map(cook);
-console.log(cookingEmojis);
+console.log(`🐮, 🥔, 🐔, 🌽 cooked to ${cookingEmojis}`);
 
 isVegetarian = [
     {key:'🍔', value: false},
@@ -40,4 +40,5 @@ console.log('the Hamburger 🍔 has meet?', hasMeet(isVegetarian[0].value));
 console.log('the french fries 🍟 has meet?', hasMeet(isVegetarian[1].value));
 console.log('the chicken 🍗 has meet?', hasMeet(isVegetarian[2].value));
 console.log('the pop corn 🍿 has meet?', hasMeet(isVegetarian[3].value));
+
 

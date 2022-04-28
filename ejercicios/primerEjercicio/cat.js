@@ -74,7 +74,7 @@ var gatico3 = new Cat(4,5,6);
 var gatico4 = new Cat(7,8,9);
 Cat.feedCats(gatico,gatico2,gatico3,gatico4);
 
-//gatico.catState();
-//console.log(gatico);
+gatico.catState();
+
 
 

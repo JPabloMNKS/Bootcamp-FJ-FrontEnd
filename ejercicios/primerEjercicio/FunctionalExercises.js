@@ -5,7 +5,6 @@ function frequentItem(exercise) {
         previousValue[currentValue] = (previousValue[currentValue] || 0 ) + 1
      return previousValue
   },{})
-
   times = commonItem.a;
   return Object.keys(commonItem).reduce((a, b) => commonItem[a] > commonItem[b] ? a : b)
 }
