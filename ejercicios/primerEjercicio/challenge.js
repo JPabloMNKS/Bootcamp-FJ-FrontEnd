@@ -27,7 +27,7 @@ console.log(
           return result
       })
    
-      console.log(`Non duplicated values: ${noFrequentItem([1,2,4,7,4,2,1])}`);
+      console.log(`result: ${noFrequentItem([1,2,4,7,4,2,1])}`);
 
 
 
