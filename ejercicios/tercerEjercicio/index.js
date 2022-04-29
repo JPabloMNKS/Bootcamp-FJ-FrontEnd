@@ -19,7 +19,7 @@ async function demoGithubUser() {
   let user;
   let name = prompt("Enter a name?:", "vanimar");
   user = await loadJson(`https://api.github.com/users/${name}`);
-  alert(`Nombre completo: ${user.name}.`);
+  alert(`Full Name: ${user.name}.`);
   return user;
 }
 
