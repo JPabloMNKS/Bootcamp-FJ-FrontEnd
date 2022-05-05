@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Component Bootcamp</title>
+  </head>
+
+  <body>
+    <jala-card
+      id="Hirotaka"
+      image="https://static.wikia.nocookie.net/wotaku-ni-koi-wa-muzukashii/images/2/22/348857.jpg"
+      name="Hirotaka Nifuji"
+      company="https://jalasoft.com/img/logo-jalasoft.svg"
+      position="Developer"
+    >
+    </jala-card>
+    <template id="userCardTemplate">
+      <style>
+        :host {
+          display: flex;
+          overflow: hidden;
+          padding: 10px;
+          box-sizing: border-box;
+        }
+
+        .company {
+          width: 200px;
+        }
+
+        .card {
+          border-width: 3px;
+          border-style: solid;
+          border-color: black;
+          padding: 1px;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+        }
+
+        .card-header {
+          padding: 10px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+        }
+
+        .card-body {
+          background-color: #222222;
+          display: flex;
+          flex: 0.5;
+          align-items: center;
+          flex-direction: column;
+          padding: 25px;
+          padding-bottom: 10px;
+        }
+
+        .card-body > .image {
+          width: 160px;
+          height: 180px;
+          vertical-align: middle;
+          border-radius: 35px;
+        }
+
+        .card-body > .name {
+          color: #d5d5d5;
+          font-size: 25px;
+          font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+          margin: 0;
+          margin-top: 20px;
+          font-weight: bold;
+
+        }
+
+        .card-footer {
+          background-color: red;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+        }
+
+        .card-footer > .position {
+          color: #d5d5d5;
+          font-size: 25px;
+          font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+          margin: 0%;
+          margin-top: 5px;
+          margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+      </style>
+
+      <div class="card">
+        <div class="card-header">
+          <img src="" class="company" />
+        </div>
+        <div class="card-body">
+          <img src="" class="image" />
+          <p class="name"></p>
+        </div>
+        <div class="card-footer">
+          <p class="position"></p>
+        </div>
+      </div>
+    </template>
+
+    <script>
+      class JalaId extends HTMLElement {
+        constructor() {
+          super();
+
+          let shadow = this.attachShadow({ mode: "closed" });
+
+          let templateElem = document.getElementById("userCardTemplate");
+          let content = templateElem.content.cloneNode(true);
+
+          content
+            .querySelector("img.company")
+            .setAttribute("src", this.getAttribute("company"));
+
+          content
+            .querySelector("img.image")
+            .setAttribute("src", this.getAttribute("image"));
+
+          content.querySelector(".card-body>.name").innerText =
+            this.getAttribute("name");
+
+          content.querySelector(".card-footer>.position").innerText =
+            this.getAttribute("position");
+
+          shadow.appendChild(content);
+        }
+      }
+      customElements.define("jala-card", JalaId);
+    </script>
+  </body>
+</html>
