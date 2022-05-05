@@ -1,3 +1,3 @@
 # Challenge completed
 
-![Challenge](./Challenge.png)
+![Challenge](./Challenge.PNG)
