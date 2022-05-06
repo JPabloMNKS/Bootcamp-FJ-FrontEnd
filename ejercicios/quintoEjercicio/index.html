@@ -3,26 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Component Bootcamp</title>
+    <title>Pokemon Challenge</title>
   </head>
 
   <body>
-    <jala-card
-      id="Hirotaka"
-      image="https://static.wikia.nocookie.net/wotaku-ni-koi-wa-muzukashii/images/2/22/348857.jpg"
-      name="Hirotaka Nifuji"
-      company="https://jalasoft.com/img/logo-jalasoft.svg"
-      position="Developer"
+    <h1>PokeDex</h1>
+    <div id="poke_container" class="poke-container"></div>
+
+
+    <poke-card
+    id="1"
+    name="charizard"
+    image=""
+    type="fuego"
     >
-    </jala-card>
-    <jala-card
-    id="Hirotaka"
-    image="https://static.wikia.nocookie.net/wotaku-ni-koi-wa-muzukashii/images/2/22/348857.jpg"
-    name="Hirotaka Nifuji"
-    company="https://jalasoft.com/img/logo-jalasoft.svg"
-    position="QA"
-  >
-  </jala-card>
+    </poke-card>
+
     <template id="userCardTemplate">
       <style>
         :host {
@@ -101,48 +97,40 @@
         }
       </style>
 
-      <div class="card">
-        <div class="card-header">
-          <img src="" class="company" />
-        </div>
-        <div class="card-body">
-          <img src="" class="image" />
-          <p class="name"></p>
-        </div>
-        <div class="card-footer">
-          <p class="position"></p>
-        </div>
+    <template id="poke_container_template">
+      <div class="img-container">
+        <img src="" class="image" />
+      </div>
+      <div class="info">
+        <h3 class="name"></h3>
       </div>
     </template>
 
     <script>
-      class JalaId extends HTMLElement {
-        constructor() {
-          super();
+        class pokeCard extends HTMLElement {
+          constructor() {
+            super();
+ 
+            let shadow = this.attachShadow({ mode: "closed" });
+    
+            let templateElem = document.getElementById("poke_container_template");
+    
+            let content = templateElem.content.cloneNode(true);
+    
+            content
+              .querySelector("img.imagen")
+              .setAttribute("src", this.getAttribute("image"));
 
-          let shadow = this.attachShadow({ mode: "closed" });
-
-          let templateElem = document.getElementById("userCardTemplate");
-          let content = templateElem.content.cloneNode(true);
-
-          content
-            .querySelector("img.company")
-            .setAttribute("src", this.getAttribute("company"));
-
-          content
-            .querySelector("img.image")
-            .setAttribute("src", this.getAttribute("image"));
-
-          content.querySelector(".card-body>.name").innerText =
-            this.getAttribute("name");
-
-          content.querySelector(".card-footer>.position").innerText =
-            this.getAttribute("position");
-
-          shadow.appendChild(content);
+    
+            content.querySelector(".card-body>.name").innerText =
+              this.getAttribute("name");
+    
+    
+            shadow.appendChild(content);
+          }
         }
-      }
-      customElements.define("jala-card", JalaId);
-    </script>
+        customElements.define("poke-card", pokeCard);
+      </script>
   </body>
 </html>
+
