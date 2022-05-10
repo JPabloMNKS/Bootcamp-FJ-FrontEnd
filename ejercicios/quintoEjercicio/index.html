@@ -6,41 +6,92 @@
     <title>Pokemon Challenge</title>
   </head>
 
-  <body>
-    <div id="poke_container" class="poke_container"></div>
-    <template id="pokemonCardTemplate">
-      <style>
-        :host {
-          display: flex;
-          overflow: hidden;
-          box-sizing: border-box;
-        }
+  <body class="container">
+    <header class="item-a">
+      
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" alt="" style="width: 300px;
+      height: 100px;">
+    </header>
 
-        .card {
-          margin: 10px;
-          border-radius: 20px;
-          display: flex;
-          align-items: center;
-          flex-direction: column;
-          background-color: #222222;
-          padding: 25px;
-          padding-bottom: 10px;
-        }
+    <section class="item-b">
+      <div id="poke_container" class="poke_container"></div>
+      <template id="pokemonCardTemplate">
+        <style>
+          :host {
+            display: flex;
+            overflow: hidden;
+            box-sizing: border-box;
+          }
 
-        .card > .name {
-          color: #d5d5d5;
-          font-size: 25px;
-          margin: 0;
-          margin-top: 20px;
-          font-weight: bold;
-        }
-      </style>
-      <div class="card">
-        <img src="" class="image" />
-        <p class="name"></p>
-      </div>
-    </template>
+          .card {
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 25px;
+          }
 
+          .card > .name {
+            color: #d5d5d5;
+            font-size: 25px;
+            margin: 0;
+            margin-top: 20px;
+            font-weight: bold;
+          }
+        </style>
+        <div class="card">
+          <img src="" class="image" />
+          <p class="name"></p>
+        </div>
+      </template>
+    </section>
+
+    <footer class="item-d">
+      <h2>Esta es una página con footer</h2>
+    </footer>
+
+
+    <style>
+
+      .item-a {
+        grid-area: header;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 40px;
+      }
+
+      .item-b {
+        grid-area: main;
+      }
+
+      .item-c {
+        grid-area: sidebar;
+      }
+
+      .item-d {
+        grid-area: footer;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas:
+          "header header header"
+          "main main main"
+          "footer footer footer";
+      }
+
+      .poke_container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        flex-direction: row;
+        justify-content: space-around;
+        align-content: space-around;
+      }
+    </style>
     <script>
       class PokemonCard extends HTMLElement {
         constructor() {
@@ -64,7 +115,7 @@
     </script>
 
     <script>
-      fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=35")
+      fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=45")
         .then((response) => response.json())
         .then((pokemons) => {
           pokemons.results.forEach((pokemon, index) => {
@@ -351,11 +402,6 @@
         return `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${imageId}.png`;
       }
     </script>
-    <style>
-      .poke_container {
-        display: flex;
-        flex-wrap: wrap;
-      }
-    </style>
   </body>
+  <footer></footer>
 </html>
