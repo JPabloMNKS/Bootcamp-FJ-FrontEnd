@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokemon Challenge</title>
+    <link rel="stylesheet" href="./../dist/style/build.css">
+
+  </head>
+
+  <body class="container">
+    <header class="item-a">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png"
+        alt=""
+        style="width: 300px; height: 100px"
+      />
+    </header>
+
+    <section class="item-b">
+      <div id="poke_container" class="poke_container"></div>
+      <template id="pokemonCardTemplate">
+        <style>
+          :host {
+            display: flex;
+            overflow: hidden;
+            box-sizing: border-box;
+          }
+
+          .card {
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 25px;
+          }
+
+          .card > .name {
+            color: #d5d5d5;
+            font-size: 25px;
+            margin: 0;
+            margin-top: 20px;
+            font-weight: bold;
+          }
+        </style>
+        <div class="card">
+          <img src="" class="image" />
+          <p class="name"></p>
+        </div>
+      </template>
+    </section>
+
+
+    <footer class="item-d">
+      <h2>Atrapalos ya!</h2>
+    </footer>
+
+ 
+    <script src="./../dist/concat.js"></script>
+
+<!-- 
+    <script src="pokemonCard.js"></script>
+    <script src="getPokemonAPI.js"></script>
+    <script src="utils.js"></script> -->
+
+  </body>
+</html>
