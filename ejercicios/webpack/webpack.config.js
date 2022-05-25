@@ -10,5 +10,15 @@ module.exports = {
         filename: 'main.js',
         // filename: '[name].js',
         path: path.join(__dirname, 'build')
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
+            },
+        ],
     }
+
+
 }
