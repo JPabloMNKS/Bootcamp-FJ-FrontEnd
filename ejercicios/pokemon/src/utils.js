@@ -266,4 +266,4 @@ function getPokemonImageUri(id) {
 }
 
 
-
+export {getPokemonImageUri, pokemonColorMap};

@@ -1,3 +1,4 @@
+
 class PokemonCard extends HTMLElement {
     constructor() {
       super();
@@ -17,3 +18,6 @@ class PokemonCard extends HTMLElement {
       shadow.appendChild(content);
     }
   }
+
+
+

@@ -1,3 +1,7 @@
+import  {getPokemonImageUri, pokemonColorMap} from './utils';
+import PokemonCard from './pokemonCard';
+
+
 fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=45")
 .then((response) => response.json())
 .then((pokemons) => {
