@@ -29,7 +29,8 @@ type Type = {
 };
 
 const MAX_ID_POKEMONS = 500;
-const POKEMONS_DISPLAYED = 3;
+const POKEMONS_DISPLAYED = 5;
+const POKEMON_MOVEMENTS = 4;
 
 export function getSinglePokemon(id: string | number) {
   return axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -37,7 +38,7 @@ export function getSinglePokemon(id: string | number) {
 
 function getNewPokemons<T extends { new(...args: any[]): {} }>(constructor: T) {
   return class extends constructor {
-    listOfIds = Array.from({ length: POKEMONS_DISPLAYED }, () => Math.floor(Math.random() * MAX_ID_POKEMONS) + 1);
+    listOfIds = Array.from({ length: POKEMONS_DISPLAYED }, () => Math.floor(Math.random() * MAX_ID_POKEMONS));
   }
 }
 
@@ -64,10 +65,10 @@ export class Pokemon {
 
     let movements = [];
     results.data.moves.forEach(move => {
-      movements.push(move.move.name)
+      movements.push(move.move.url)
     });
     let randomMovements = [];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < POKEMON_MOVEMENTS; i++) {
       const randomMove = Math.floor(Math.random() * movements.length);
       randomMovements.push(movements[randomMove]);
     }

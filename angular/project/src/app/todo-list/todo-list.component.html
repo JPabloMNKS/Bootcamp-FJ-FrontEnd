@@ -1,0 +1,10 @@
+<h1>ToDos</h1>
+<input class="new-todo" #newToDoInput placeholder="Add new ToDo" (keyup.enter)="addToDo(newToDoInput.value)">
+<ul class="todo-list">
+  <li *ngFor="let todo of toDoList index as i">
+    <div class="view">
+      <label>{{todo}}</label>
+      <button class="destroy" (click)="removeToDo(i)"></button>
+    </div>
+  </li>
+</ul>
