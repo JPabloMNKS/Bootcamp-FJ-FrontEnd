@@ -15,7 +15,9 @@ export class TodoListComponent implements OnInit {
   }
 
   addToDo(newToDo: string){
-    this.toDoList.push(newToDo);
+    if(newToDo.length > 0){
+      this.toDoList.unshift(newToDo);
+    }
   }
 
   removeToDo(index: number) {
