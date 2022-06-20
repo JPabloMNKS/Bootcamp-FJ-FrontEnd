@@ -1,0 +1,17 @@
+<button (click)="isloged()">{{isLoggedIn?'Salir de':'Ingresar a'}}  la cuenta</button>
+
+<ng-container
+  *ngIf="isLoggedIn; then loggedIn;  else loggedOut">
+</ng-container>
+
+<ng-template #loggedIn>
+  <div>
+    Bienvenido, disfruta de la pagina web
+  </div>
+</ng-template>
+<ng-template #loggedOut>
+  <div>
+    Registrate, para ver la pagina
+  </div>
+</ng-template>
+
