@@ -1,0 +1,22 @@
+
+:host {
+  display: flex;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.card {
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.card > .name {
+  color: #d5d5d5;
+  font-size: 25px;
+  margin: 0;
+  margin-top: 20px;
+  font-weight: bold;
+}

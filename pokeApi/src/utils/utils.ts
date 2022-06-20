@@ -1,4 +1,4 @@
-export const pokemonColorMap = {
+export const pokemonColorMap: any = {
   "1": "#4ca04c",//green
   "2": "#4ca04c",
   "3": "#4ca04c",
@@ -152,9 +152,12 @@ export const pokemonColorMap = {
   "151": "#ffb6c3",
 }
 
-const dataPokemons = {
-  "count": 1118,
-  "next": "https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20",
+export const dataPokemons = {
+  // 20220620154940
+// https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50
+
+  "count": 1126,
+  "next": "https://pokeapi.co/api/v2/pokemon/?offset=50&limit=50",
   "previous": null,
   "results": [
     {
@@ -238,29 +241,129 @@ const dataPokemons = {
       "url": "https://pokeapi.co/api/v2/pokemon/20/"
     },
     {
-      "name":"spearow",
-      "url":"https://pokeapi.co/api/v2/pokemon/21/"
+      "name": "spearow",
+      "url": "https://pokeapi.co/api/v2/pokemon/21/"
     },
     {
-      "name":"fearow",
-      "url":"https://pokeapi.co/api/v2/pokemon/22/"
+      "name": "fearow",
+      "url": "https://pokeapi.co/api/v2/pokemon/22/"
     },
     {
-      "name":"ekans",
-      "url":"https://pokeapi.co/api/v2/pokemon/23/"
+      "name": "ekans",
+      "url": "https://pokeapi.co/api/v2/pokemon/23/"
     },
     {
-      "name":"arbok",
-      "url":"https://pokeapi.co/api/v2/pokemon/24/"
+      "name": "arbok",
+      "url": "https://pokeapi.co/api/v2/pokemon/24/"
     },
     {
-      "name":"pikachu",
-      "url":"https://pokeapi.co/api/v2/pokemon/25/"
+      "name": "pikachu",
+      "url": "https://pokeapi.co/api/v2/pokemon/25/"
+    },
+    {
+      "name": "raichu",
+      "url": "https://pokeapi.co/api/v2/pokemon/26/"
+    },
+    {
+      "name": "sandshrew",
+      "url": "https://pokeapi.co/api/v2/pokemon/27/"
+    },
+    {
+      "name": "sandslash",
+      "url": "https://pokeapi.co/api/v2/pokemon/28/"
+    },
+    {
+      "name": "nidoran-f",
+      "url": "https://pokeapi.co/api/v2/pokemon/29/"
+    },
+    {
+      "name": "nidorina",
+      "url": "https://pokeapi.co/api/v2/pokemon/30/"
+    },
+    {
+      "name": "nidoqueen",
+      "url": "https://pokeapi.co/api/v2/pokemon/31/"
+    },
+    {
+      "name": "nidoran-m",
+      "url": "https://pokeapi.co/api/v2/pokemon/32/"
+    },
+    {
+      "name": "nidorino",
+      "url": "https://pokeapi.co/api/v2/pokemon/33/"
+    },
+    {
+      "name": "nidoking",
+      "url": "https://pokeapi.co/api/v2/pokemon/34/"
+    },
+    {
+      "name": "clefairy",
+      "url": "https://pokeapi.co/api/v2/pokemon/35/"
+    },
+    {
+      "name": "clefable",
+      "url": "https://pokeapi.co/api/v2/pokemon/36/"
+    },
+    {
+      "name": "vulpix",
+      "url": "https://pokeapi.co/api/v2/pokemon/37/"
+    },
+    {
+      "name": "ninetales",
+      "url": "https://pokeapi.co/api/v2/pokemon/38/"
+    },
+    {
+      "name": "jigglypuff",
+      "url": "https://pokeapi.co/api/v2/pokemon/39/"
+    },
+    {
+      "name": "wigglytuff",
+      "url": "https://pokeapi.co/api/v2/pokemon/40/"
+    },
+    {
+      "name": "zubat",
+      "url": "https://pokeapi.co/api/v2/pokemon/41/"
+    },
+    {
+      "name": "golbat",
+      "url": "https://pokeapi.co/api/v2/pokemon/42/"
+    },
+    {
+      "name": "oddish",
+      "url": "https://pokeapi.co/api/v2/pokemon/43/"
+    },
+    {
+      "name": "gloom",
+      "url": "https://pokeapi.co/api/v2/pokemon/44/"
+    },
+    {
+      "name": "vileplume",
+      "url": "https://pokeapi.co/api/v2/pokemon/45/"
+    },
+    {
+      "name": "paras",
+      "url": "https://pokeapi.co/api/v2/pokemon/46/"
+    },
+    {
+      "name": "parasect",
+      "url": "https://pokeapi.co/api/v2/pokemon/47/"
+    },
+    {
+      "name": "venonat",
+      "url": "https://pokeapi.co/api/v2/pokemon/48/"
+    },
+    {
+      "name": "venomoth",
+      "url": "https://pokeapi.co/api/v2/pokemon/49/"
+    },
+    {
+      "name": "diglett",
+      "url": "https://pokeapi.co/api/v2/pokemon/50/"
     }
   ]
 };
 
-export function getPokemonImageUri (id: any) {
+export function getPokemonImageUri (id: number) {
   const imageId = ('00' + id).slice(-3); // para 1 => 001
   return `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${imageId}.png`;
 }
