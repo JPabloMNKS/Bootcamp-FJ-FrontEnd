@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from 'src/app/interfaces/pokemon.interface';
-import { dataPokemons, getPokemonImageUri, pokemonColorMap } from 'src/utils/utils';
+import { Pokemon } from 'src/app/core/interfaces/pokemon.interface';
+import { dataPokemons, getPokemonImageUri, pokemonColorMap } from 'src/app/utils/utils';
 
 @Component({
-  selector: 'app-poke-body',
-  templateUrl: './poke-body.component.html',
-  styleUrls: ['./poke-body.component.scss']
+  selector: 'app-pokemon-list',
+  templateUrl: './pokemon-list.component.html',
+  styleUrls: ['./pokemon-list.component.scss']
 })
-export class PokeBodyComponent implements OnInit{
+export class PokemonListComponent implements OnInit{
 
   pokemons: Pokemon[] = [];
 

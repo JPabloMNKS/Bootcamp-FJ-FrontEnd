@@ -4,13 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ExampleComponent } from './component/example/example.component';
-import {NgIfAs} from './component/example/ngasif/ngasif.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    ExampleComponent,
-    NgIfAs
+    ExampleComponent
   ],
   imports: [
     BrowserModule,
