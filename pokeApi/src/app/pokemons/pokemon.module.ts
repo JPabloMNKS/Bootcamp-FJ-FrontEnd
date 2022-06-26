@@ -20,7 +20,9 @@ import { FooterComponent } from '../core/footer/footer.component';
   ],
   exports: [
     PokemonListComponent,
-    PokemonComponent
+    PokemonComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   providers: [],
 })

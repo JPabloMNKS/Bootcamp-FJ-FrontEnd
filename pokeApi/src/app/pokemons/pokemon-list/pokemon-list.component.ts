@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/core/interfaces/pokemon.interface';
 import { dataPokemons, getPokemonImageUri, pokemonColorMap } from 'src/app/utils/utils';
+
+import { HeaderComponent } from 'src/app/core/header/header.component';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -16,6 +18,14 @@ export class PokemonListComponent implements OnInit{
   ngOnInit(): void {
     this.getPokemons();
   }
+
+  // asd = new HeaderComponent();
+
+  // const searchedPokemon =
+
+  // getSearchedPokemon(){
+  //   const found = this.pokemons.find(element => element === this.searchedPokemon);
+  // }
 
   getPokemons() {
     dataPokemons.results.map((pokemon, index) => {
