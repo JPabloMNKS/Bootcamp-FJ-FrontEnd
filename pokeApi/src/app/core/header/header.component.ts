@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,14 +8,8 @@ import { Component, Input } from '@angular/core';
 export class HeaderComponent   {
 
 
-  public pokemon!: string;
-
-
   constructor() { }
 
-  searchPokemon(){
-    return this.pokemon;
-  }
 
 
 

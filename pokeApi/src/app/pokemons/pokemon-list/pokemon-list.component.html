@@ -1,5 +1,12 @@
+<div>
+  <app-search
+    (searchForAPokemon)="searchPokemon($event.target.value)"
+  ></app-search>
+</div>
+<br />
+
 <div class="poke-container">
-  <div *ngFor="let pokemon of pokemons">
+  <div *ngFor="let pokemon of searchedPokemons">
     <app-pokemon [pokemon]="pokemon"></app-pokemon>
   </div>
 </div>
