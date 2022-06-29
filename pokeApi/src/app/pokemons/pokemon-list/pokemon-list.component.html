@@ -7,4 +7,10 @@
   <div *ngFor="let pokemon of searchedPokemons">
     <app-pokemon [pokemon]="pokemon"></app-pokemon>
   </div>
+
+  <ng-container *ngIf="searchedPokemons.length == 0; then notFound">
+  </ng-container>
+  <ng-template #notFound>
+    <app-not-found></app-not-found>
+  </ng-template>
 </div>
