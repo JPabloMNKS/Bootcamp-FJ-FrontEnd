@@ -7,6 +7,8 @@ import { PokemonModule } from './pokemons/pokemon.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     PokemonModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+
+
   ],
-  providers: [],
+  providers: [MatPaginatorModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

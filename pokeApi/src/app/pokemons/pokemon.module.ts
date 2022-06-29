@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
@@ -20,7 +21,8 @@ import { NotFoundComponent } from '../core/not-found/not-found.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    MatPaginatorModule
 
   ],
   exports: [
@@ -31,6 +33,6 @@ import { NotFoundComponent } from '../core/not-found/not-found.component';
     SearchComponent,
     NotFoundComponent
   ],
-  providers: [],
+  providers: [MatPaginatorModule],
 })
 export class PokemonModule { }

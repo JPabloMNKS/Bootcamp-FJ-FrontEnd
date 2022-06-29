@@ -1,16 +1,23 @@
-<div>
-  <app-search (searchForAPokemon)="searchPokemon($event)"></app-search>
-</div>
-<br />
+<section>
 
-<div class="poke-container">
-  <div *ngFor="let pokemon of searchedPokemons">
-    <app-pokemon [pokemon]="pokemon"></app-pokemon>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+  </mat-paginator>
+
+  <div>
+    <app-search (searchForAPokemon)="searchPokemon($event)"></app-search>
+  </div>
+  <br />
+
+  <div class="poke-container">
+    <div *ngFor="let pokemon of searchedPokemons">
+      <app-pokemon [pokemon]="pokemon"></app-pokemon>
+    </div>
+
+    <ng-container *ngIf="searchedPokemons.length == 0; then notFound">
+    </ng-container>
+    <ng-template #notFound>
+      <app-not-found></app-not-found>
+    </ng-template>
   </div>
 
-  <ng-container *ngIf="searchedPokemons.length == 0; then notFound">
-  </ng-container>
-  <ng-template #notFound>
-    <app-not-found></app-not-found>
-  </ng-template>
-</div>
+</section>
