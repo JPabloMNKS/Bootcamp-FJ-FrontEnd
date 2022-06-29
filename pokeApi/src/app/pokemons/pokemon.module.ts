@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
@@ -18,6 +18,7 @@ import { SearchComponent } from '../core/search/search.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule
 
   ],
   exports: [

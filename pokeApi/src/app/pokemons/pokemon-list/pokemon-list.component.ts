@@ -7,6 +7,7 @@ import {
 } from 'src/app/utils/utils';
 
 import { HeaderComponent } from 'src/app/core/header/header.component';
+import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -15,11 +16,22 @@ import { HeaderComponent } from 'src/app/core/header/header.component';
 })
 export class PokemonListComponent implements OnInit {
   pokemons: Pokemon[] = [];
+  pokemonList: Pokemon[] = [];
   searchedPokemons: Pokemon[] = [];
 
-  constructor() {}
+  limit: number = 50;
+  offset: number = 0;
+
+  constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
+    this.pokemonService
+      .getPokemonList(this.offset, this.limit)
+      .subscribe(
+        (data: { results: Pokemon[] }) =>
+          this.pokemonList = [...this.pokemonList, ...data.results]
+      );
+        this.offset += this.limit;
     this.getPokemons();
   }
 
@@ -45,4 +57,6 @@ export class PokemonListComponent implements OnInit {
     });
     this.searchedPokemons = this.pokemons;
   }
+
+
 }

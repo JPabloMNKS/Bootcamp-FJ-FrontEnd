@@ -1,5 +1,10 @@
-<label>Search the pokedex:</label>
-<input
-  (input)="searchForAPokemon.emit($event)"
-  placeholder="Look for a pokemon"
-/>
+<div class="search">
+  <label>Search the pokedex:</label>
+  <input
+    class="searchTerm"
+    type="text"
+    placeholder="Search for a pokemon"
+    [ngModel]="search"
+    (ngModelChange)="searchForAPokemon.emit($event)"
+  />
+</div>
