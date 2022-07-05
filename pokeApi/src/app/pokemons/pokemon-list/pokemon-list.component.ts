@@ -28,11 +28,14 @@ export class PokemonListComponent implements OnInit {
     this.pokemonService
       .getPokemonList(this.offset, this.limit)
       .subscribe(
-        (data: { results: Pokemon[] }) =>
-          this.pokemonList = [...this.pokemonList, ...data.results]
+        (data: { results: Pokemon[] }) =>{
+          this.pokemonList = [...this.pokemonList, ...data.results];
+          this.searchedPokemons = this.getPokemons(data);
+          this.pokemons = this.getPokemons(data);
+        }
       );
         this.offset += this.limit;
-    this.getPokemons();
+    // this.getPokemons();
   }
 
   searchPokemon(pokemonSearched: string) {
@@ -41,22 +44,34 @@ export class PokemonListComponent implements OnInit {
     );
   }
 
-  getPokemons() {
-    dataPokemons.results.map((pokemon, index) => {
-      const id = index + 1;
-      const image = getPokemonImageUri(id);
+  getPokemons(data: { results: Pokemon[] }) {
+    return data.results.map((pokemon, index) => {
+      const id: number = index + 1;
       const backgroundColor = pokemonColorMap[id];
-      const textcolor = backgroundColor[1] === 'f' ? '#000' : '#fff';
-      this.pokemons.push({
-        id: id,
-        name: pokemon.name,
-        image: image,
-        backroundColor: backgroundColor,
-        textColor: textcolor,
-      });
+      pokemon.id = id;
+      pokemon.image = this.pokemonService.getPokemonImageUri(id);
+      pokemon.backroundColor = backgroundColor;
+      pokemon.textColor = backgroundColor[1] === 'f' ? '#000' : '#fff';
+      return pokemon;
     });
-    this.searchedPokemons = this.pokemons;
   }
+
+  // getPokemons() {
+  //   dataPokemons.results.map((pokemon, index) => {
+  //     const id = index + 1;
+  //     const image = getPokemonImageUri(id);
+  //     const backgroundColor = pokemonColorMap[id];
+  //     const textcolor = backgroundColor[1] === 'f' ? '#000' : '#fff';
+  //     this.pokemons.push({
+  //       id: id,
+  //       name: pokemon.name,
+  //       image: image,
+  //       backroundColor: backgroundColor,
+  //       textColor: textcolor,
+  //     });
+  //   });
+  //   this.searchedPokemons = this.pokemons;
+  // }
 
 
 }
