@@ -1,12 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/core/interfaces/pokemon.interface';
-import {
-  dataPokemons,
-  getPokemonImageUri,
-  pokemonColorMap,
-} from 'src/app/utils/utils';
+import { pokemonColorMap } from 'src/app/utils/utils';
 
-import { HeaderComponent } from 'src/app/core/header/header.component';
 import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
@@ -22,20 +17,20 @@ export class PokemonListComponent implements OnInit {
   limit: number = 50;
   offset: number = 0;
 
+  pageSizeOptions: number[] = [25, 50];
+  pageSize: number = 50;
+  lenght!: number;
+
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
     this.pokemonService
       .getPokemonList(this.offset, this.limit)
-      .subscribe(
-        (data: { results: Pokemon[] }) =>{
-          this.pokemonList = [...this.pokemonList, ...data.results];
-          this.searchedPokemons = this.getPokemons(data);
-          this.pokemons = this.getPokemons(data);
-        }
-      );
-        this.offset += this.limit;
-    // this.getPokemons();
+      .subscribe((data: { results: Pokemon[] }) => {
+        this.pokemons = this.getPokemons(data);
+        this.searchedPokemons = this.pokemons;
+      });
+    this.offset += this.limit;
   }
 
   searchPokemon(pokemonSearched: string) {
@@ -55,23 +50,4 @@ export class PokemonListComponent implements OnInit {
       return pokemon;
     });
   }
-
-  // getPokemons() {
-  //   dataPokemons.results.map((pokemon, index) => {
-  //     const id = index + 1;
-  //     const image = getPokemonImageUri(id);
-  //     const backgroundColor = pokemonColorMap[id];
-  //     const textcolor = backgroundColor[1] === 'f' ? '#000' : '#fff';
-  //     this.pokemons.push({
-  //       id: id,
-  //       name: pokemon.name,
-  //       image: image,
-  //       backroundColor: backgroundColor,
-  //       textColor: textcolor,
-  //     });
-  //   });
-  //   this.searchedPokemons = this.pokemons;
-  // }
-
-
 }

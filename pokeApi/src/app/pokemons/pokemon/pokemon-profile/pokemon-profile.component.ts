@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'pokemon-profile-component',
   templateUrl: './pokemon-profile.component.html',
 })
-export class PokemonProfileComponent implements OnInit{
+export class PokemonProfileComponent implements OnInit {
   id: string = '1';
   fields: any;
 
@@ -18,9 +18,9 @@ export class PokemonProfileComponent implements OnInit{
   ) {}
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') || '1';
-    this.pokemonService.getPokemon(this.id)
-      .subscribe( pokemonDetail => {
-        this.fields = pokemonDetail});
+    this.pokemonService.getPokemon(this.id).subscribe((pokemonDetail) => {
+      this.fields = pokemonDetail;
+    });
   }
 
   goBack(): void {
