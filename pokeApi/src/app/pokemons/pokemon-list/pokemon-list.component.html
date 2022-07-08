@@ -10,7 +10,7 @@
 
   <div>
     <app-search (searchForAPokemon)="searchPokemon($event)"></app-search>
-    <button (click)="sortByName()">{{sorted ? 'Ordenar por id': 'Ordenar por nombre'}}</button>
+    <button class="button-18" (click)="sortByName()">{{sorted ? 'Ordenar por id': 'Ordenar por nombre'}}</button>
   </div>
   <br />
 
@@ -26,3 +26,4 @@
     </ng-template>
   </div>
 </section>
+
