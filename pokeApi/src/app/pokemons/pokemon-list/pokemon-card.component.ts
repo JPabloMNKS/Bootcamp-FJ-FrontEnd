@@ -15,6 +15,6 @@ export class PokemonCardComponent {
   constructor(private router: Router) {}
 
   goToPokemonProfile() {
-    this.router.navigate(['pokedex', this.pokemon.image]);
+    this.router.navigate([`/pokedex/${this.pokemon.id}`]);
   }
 }

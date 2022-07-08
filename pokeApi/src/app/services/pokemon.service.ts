@@ -9,7 +9,10 @@ import { shareReplay, switchMap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
+
 export class PokemonService {
+  pokemons!: Pokemon;
+
   constructor(private http: HttpClient) {}
 
   private API = 'https://pokeapi.co/api/v2';
@@ -26,44 +29,39 @@ export class PokemonService {
   }
 
   getPokemon(id: string) {
-    return this.http.get(`${this.API}/pokemon/${id}`) as Observable<{
-      results: any;
-    }>;
+    return this.http.get<Pokemon>(`${this.API}/pokemon/${id}`);
+    // return this.http.get(`${this.API}/pokemon/${id}`) as Observable<{
+    //   results: Pokemon;
+    // }>;
   }
 
-  // pokemons: Pokemon[] = [];
-  // private pokemonsData = new BehaviorSubject<void>(undefined);
+  getPokemonData(id: string)  {
 
-  // pokemonRequest = this.getPokemonList(0, 50)
-  // .subscribe((data: { results: Pokemon[] }) => {
-  //   this.pokemons = this.setPokemonsData(data);
-  // });
-
-  // public pokemonService = this.pokemonsData.pipe(
-  //   switchMap(async () => this.pokemonRequest),
-  //   shareReplay(1)
-  // );
+    this.getPokemon(id).subscribe((data) => {
+      return this.pokemons = this.setPokemonsData(data, parseInt(id));
+    });
+    return this.pokemons;
+  }
 
   // getPokemons() {
-  //   this.getPokemonList(0, 50)
+  //   this.pokemonService
+  //     .getPokemonList(this.offset, this.limit)
   //     .subscribe((data: { results: Pokemon[] }) => {
   //       this.pokemons = this.setPokemonsData(data);
+  //       this.searchedPokemons = this.pokemons;
+  //       this.pokemonsToDisplay(0, 18);
   //     });
-  //     return this.pokemons;
   // }
 
-  // setPokemonsData(data: { results: Pokemon[] }) {
-  //   return data.results.map((pokemon, index) => {
-  //     const id: number = index + 1;
-  //     const backgroundColor = pokemonColorMap[id];
-  //     pokemon.id = id;
-  //     pokemon.image = this.getPokemonImageUri(id);
-  //     pokemon.backroundColor = backgroundColor;
-  //     pokemon.textColor = backgroundColor[1] === 'f' ? '#000' : '#fff';
-  //     return pokemon;
-  //   });
-  // }
-
-
-
+  setPokemonsData(data: Pokemon, ids:number) {
+    return data.results.map((pokemon: { id: number; image: string; backroundColor: any; textColor: string; }) => {
+      const id: number = ids;
+      const backgroundColor = pokemonColorMap[id];
+      pokemon.id = id;
+      pokemon.image = this.getPokemonImageUri(id);
+      pokemon.backroundColor = backgroundColor;
+      pokemon.textColor = backgroundColor[1] === 'f' ? '#000' : '#fff';
+      return pokemon;
+    });
+  }
 }

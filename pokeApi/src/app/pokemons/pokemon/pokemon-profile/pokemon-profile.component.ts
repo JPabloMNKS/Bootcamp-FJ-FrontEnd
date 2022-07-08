@@ -23,13 +23,15 @@ export class PokemonProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') || '1';
-    this.pokemonService.getPokemon(this.id).subscribe((pokemon) => {
-      this.fields = pokemon.results;
+    console.log(this.id);
+    this.pokemonService.getPokemonData(this.id).subscribe((pokemonData: Pokemon) => {
+      this.pokemon = pokemonData;
+      console.log(this.pokemon.name)
     });
   }
 
   goBack(): void {
-    this.location.back;
+    this.location.back();
   }
 
 
