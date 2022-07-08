@@ -1,8 +1,8 @@
 <section>
   <mat-paginator
-    [length]="50"
-    (page)="test($event)"
-    [pageSize]="10"
+    [length]="100"
+    (page)="paginatorOrganizer($event)"
+    [pageSize]="18"
 
     aria-label="Select page"
   >
@@ -14,11 +14,11 @@
   <br />
 
   <div class="poke-container">
-    <div *ngFor="let pokemon of searchedPokemons">
+    <div *ngFor="let pokemon of listOfPokemonsToDisplay">
       <app-pokemon [pokemon]="pokemon"></app-pokemon>
     </div>
 
-    <ng-container *ngIf="searchedPokemons.length == 0; then notFound">
+    <ng-container *ngIf="listOfPokemonsToDisplay.length == 0; then notFound">
     </ng-container>
     <ng-template #notFound>
       <app-not-found></app-not-found>

@@ -18,43 +18,58 @@ import { PokemonService } from '../../services/pokemon.service';
   styleUrls: ['./pokemon-list.component.scss'],
 })
 export class PokemonListComponent implements OnInit {
-
   pokemons: Pokemon[] = [];
   pokemonList: Pokemon[] = [];
   searchedPokemons: Pokemon[] = [];
 
-  limit: number = 50;
+  listOfPokemonsToDisplay: Pokemon[] = [];
+  extraPokemons: Pokemon[] = [];
+
+  limit: number = 100;
   offset: number = 0;
   pageEvent!: PageEvent;
 
   pageSizeOptions: number[] = [25, 50];
-  pageSize: number = 50;
+  pageSize: number = 18;
   lenght!: number;
 
+  sorted: boolean = false;
+
   constructor(private pokemonService: PokemonService) {}
-
-
-
-  test(event: PageEvent) {
-
-    this.offset = ((event.pageIndex+1) * event.pageSize) - 9;
-
-    console.log( this.offset);
-
-    this.limit = (event.pageIndex+1) * event.pageSize;
-    console.log( this.limit);
-
-    this.getPokemons();
-  }
 
   ngOnInit(): void {
     this.getPokemons();
   }
 
+
+
+  pokemonsToDisplay(bajo: number, alto: number) {
+    this.listOfPokemonsToDisplay = [];
+    this.searchedPokemons.forEach((value, index) => {
+      if (index >= bajo && index < alto)
+        this.listOfPokemonsToDisplay.push(value);
+    });
+
+    this.extraPokemons = this.listOfPokemonsToDisplay;
+  }
+
   searchPokemon(pokemonSearched: string) {
-    this.searchedPokemons = this.pokemons.filter((pokemon) =>
+    this.listOfPokemonsToDisplay = this.extraPokemons.filter((pokemon) =>
       pokemon.name.includes(pokemonSearched)
     );
+  }
+
+  paginatorOrganizer(event: PageEvent) {
+    this.listOfPokemonsToDisplay = [];
+    const bajo = (event.pageIndex + 1) * event.pageSize - 19;
+    const alto = (event.pageIndex + 1) * event.pageSize;
+
+    this.searchedPokemons.forEach((value, index) => {
+      if (index > bajo && index < alto)
+        this.listOfPokemonsToDisplay.push(value);
+    });
+
+    this.extraPokemons = this.listOfPokemonsToDisplay;
   }
 
   getPokemons() {
@@ -63,11 +78,8 @@ export class PokemonListComponent implements OnInit {
       .subscribe((data: { results: Pokemon[] }) => {
         this.pokemons = this.setPokemonsData(data);
         this.searchedPokemons = this.pokemons;
+        this.pokemonsToDisplay(0, 18);
       });
-    // this.offset += this.limit;
-
-    // this.searchedPokemons = [];
-    // this.pokemons = [];
   }
 
   setPokemonsData(data: { results: Pokemon[] }) {
