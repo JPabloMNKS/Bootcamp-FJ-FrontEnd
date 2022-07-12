@@ -22,13 +22,38 @@ export class PokemonProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // this.id = this.route.snapshot.paramMap.get('id') || '1';
+    // console.log(this.id);
+    // this.pokemonService.getPokemon(this.id).subscribe((pokemonData: Pokemon) => {
+    //   this.pokemon = pokemonData;
+    //   console.log(this.pokemon.name);
+    //   console.log(this.pokemon.image);
+    // });
+    this.getPokemon();
+  }
+
+  getPokemon(){
     this.id = this.route.snapshot.paramMap.get('id') || '1';
-    console.log(this.id);
-    this.pokemonService.getPokemonData(this.id).subscribe((pokemonData: Pokemon) => {
+    this.pokemonService.getPokemon(this.id).subscribe((pokemonData: Pokemon) => {
       this.pokemon = pokemonData;
-      console.log(this.pokemon.name)
+      const pokemonID = parseInt(this.id);
+      this.pokemon.id = pokemonID
+      this.pokemon.image = this.pokemonService.getPokemonImageUri(pokemonID);
+      this.pokemon.backgroundColor = pokemonColorMap[pokemonID];
+      this.pokemon.textColor = pokemonColorMap[pokemonID] === 'f' ? '#000' : '#fff';
+
+      console.log('id ',this.pokemon.id);
+      console.log('image ',this.pokemon.image);
+      console.log('backcolor ',this.pokemon.backroundColor);
+      console.log('txtcolor ',this.pokemon.textColor);
+
     });
   }
+
+
+
+
+
 
   goBack(): void {
     this.location.back();

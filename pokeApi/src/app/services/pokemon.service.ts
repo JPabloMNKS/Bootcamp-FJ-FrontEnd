@@ -35,6 +35,10 @@ export class PokemonService {
     // }>;
   }
 
+  getPokemon2(id:string){
+    return this.http.get(`${this.API}/pokemon/${id}`) as Observable<Pokemon>;
+  }
+
   getPokemonData(id: string)  {
 
     this.getPokemon(id).subscribe((data) => {

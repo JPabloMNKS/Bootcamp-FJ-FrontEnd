@@ -11,6 +11,7 @@ import { SearchComponent } from '../core/search/search.component';
 import { NotFoundComponent } from '../core/not-found/not-found.component';
 import { PokemonProfileComponent } from './pokemon/pokemon-profile/pokemon-profile.component';
 import { PokemonRoutingModule } from './pokemon-routing.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,8 @@ import { PokemonRoutingModule } from './pokemon-routing.module';
     PokemonProfileComponent
   ],
   imports: [
+    PokemonRoutingModule,
+    CommonModule,
     BrowserModule,
     FormsModule,
     MatPaginatorModule

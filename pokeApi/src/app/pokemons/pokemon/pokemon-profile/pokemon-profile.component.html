@@ -1,18 +1,19 @@
-
+<section style="justify-content: center;
+align-items: center; display:flex;">
   <article class="card">
     <button (click)="goBack()">Go Back</button>
-      <!-- <img src="{{pokemon[0].image}}" alt="imagen header card" class="card-header"> -->
-      <div class="card-body">
-          <!-- <img src="{{pokemon[0].image}}" alt="imagen" class="card-body-img"> -->
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" alt="imagen header card" class="card-header">
+      <div class="card-body" [ngStyle]="{ 'background-color': pokemon.backgroundColor }">
+          <img src="{{pokemon.image}}" alt="imagen" class="card-body-img" >
           <h1 class="card-body-title">
-              Pokemon name
+            {{pokemon.name}}
           </h1>
-          <p class="card-body-text">Pokemon name</p>
+          <!-- <p class="card-body-text">Pokemon name</p> -->
       </div>
-      <div class="card-footer">
+      <div class="card-footer" [ngStyle]="{ 'background-color': pokemon.backgroundColor }">
           <div class="card-footer-social">
               <h3>dato</h3>
-              <p> {{pokemon.name}}</p>
+              <p> {{pokemon.backgroundColor}}</p>
           </div>
           <div class="card-footer-social">
               <h3>Dato</h3>
@@ -25,3 +26,5 @@
       </div>
   </article>
 
+
+</section>
