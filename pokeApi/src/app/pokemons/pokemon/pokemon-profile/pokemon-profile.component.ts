@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Pokemon } from 'src/app/core/interfaces/pokemon.interface';
 import { pokemonColorMap } from 'src/app/utils/utils';
 import { PokemonDescription } from '../../../core/interfaces/pokemon.interface';
+import {ProgressBarMode} from '@angular/material/progress-bar';
 
 @Component({
   selector: 'pokemon-profile-component',
@@ -59,7 +60,7 @@ export class PokemonProfileComponent implements OnInit {
       this.pokemon.weight = pokemonData.weight;
       this.pokemon.stats = pokemonData.stats;
 
-      console.log('Test  2 dsa dsa ', this.pokemon.stats );
+      console.log('Test  2 dsa dsa ', this.pokemon );
 
     });
   }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { PokemonCardComponent } from './pokemon-list/pokemon-card.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
@@ -25,6 +26,7 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
     PokemonRoutingModule,
+    MatProgressBarModule,
     CommonModule,
     BrowserModule,
     FormsModule,
