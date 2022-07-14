@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Pokemon } from '../core/interfaces/pokemon.interface';
+import { Pokemon, PokemonDescription } from '../core/interfaces/pokemon.interface';
 import { Observable } from 'rxjs/internal/Observable';
 import { pokemonColorMap } from '../utils/utils';
 import { BehaviorSubject } from 'rxjs';
@@ -35,8 +35,8 @@ export class PokemonService {
     // }>;
   }
 
-  getPokemon2(id:string){
-    return this.http.get(`${this.API}/pokemon/${id}`) as Observable<Pokemon>;
+  getPokemonDescription(id:string){
+    return this.http.get<PokemonDescription>(`${this.API}/pokemon/${id}`);
   }
 
   getPokemonData(id: string)  {

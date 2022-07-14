@@ -4,6 +4,7 @@ import { PokemonService } from '../../../services/pokemon.service';
 import { ActivatedRoute } from '@angular/router';
 import { Pokemon } from 'src/app/core/interfaces/pokemon.interface';
 import { pokemonColorMap } from 'src/app/utils/utils';
+import { PokemonDescription } from '../../../core/interfaces/pokemon.interface';
 
 @Component({
   selector: 'pokemon-profile-component',
@@ -22,45 +23,52 @@ export class PokemonProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.id = this.route.snapshot.paramMap.get('id') || '1';
-    // console.log(this.id);
-    // this.pokemonService.getPokemon(this.id).subscribe((pokemonData: Pokemon) => {
-    //   this.pokemon = pokemonData;
-    //   console.log(this.pokemon.name);
-    //   console.log(this.pokemon.image);
-    // });
-    this.getPokemon();
+    this.getPokemonDescription();
+
+    // this.getPokemon();
   }
 
-  getPokemon(){
+  // getPokemon(){
+  //   this.id = this.route.snapshot.paramMap.get('id') || '1';
+  //   this.pokemonService.getPokemon(this.id).subscribe((pokemonData: Pokemon) => {
+  //     this.pokemon = pokemonData;
+  //     const pokemonID = parseInt(this.id);
+  //     const backgroundColor = pokemonColorMap[pokemonID];
+  //     this.pokemon.id = pokemonID;
+  //     this.pokemon.image = this.pokemonService.getPokemonImageUri(pokemonID);
+  //     this.pokemon.backgroundColor = backgroundColor;
+  //     this.pokemon.textColor = backgroundColor[1] === 'f' ? '#000' : '#fff';
+
+  //     console.log('Test ', pokemonData);
+
+  //   });
+  // }
+  staats= '';
+
+  getPokemonDescription(){
     this.id = this.route.snapshot.paramMap.get('id') || '1';
-    this.pokemonService.getPokemon(this.id).subscribe((pokemonData: Pokemon) => {
+    this.pokemonService.getPokemonDescription(this.id).subscribe((pokemonData: PokemonDescription) => {
       this.pokemon = pokemonData;
       const pokemonID = parseInt(this.id);
-      this.pokemon.id = pokemonID
+      const backgroundColor = pokemonColorMap[pokemonID];
+      this.pokemon.id = pokemonID;
       this.pokemon.image = this.pokemonService.getPokemonImageUri(pokemonID);
-      this.pokemon.backgroundColor = pokemonColorMap[pokemonID];
-      this.pokemon.textColor = pokemonColorMap[pokemonID] === 'f' ? '#000' : '#fff';
+      this.pokemon.backgroundColor = backgroundColor;
+      this.pokemon.textColor = backgroundColor[1] === 'f' ? '#000' : '#fff';
+      this.pokemon.height = pokemonData.height;
+      this.pokemon.weight = pokemonData.weight;
+      this.pokemon.stats = pokemonData.stats;
 
-      console.log('id ',this.pokemon.id);
-      console.log('image ',this.pokemon.image);
-      console.log('backcolor ',this.pokemon.backroundColor);
-      console.log('txtcolor ',this.pokemon.textColor);
+      console.log('Test  2 dsa dsa ', this.pokemon.stats );
 
     });
   }
 
 
 
-
-
-
   goBack(): void {
     this.location.back();
   }
-
-
-
 
 
 }

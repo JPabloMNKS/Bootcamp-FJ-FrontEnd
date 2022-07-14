@@ -1,28 +1,33 @@
 <section style="justify-content: center;
-align-items: center; display:flex;">
+align-items: center; display:flex; height: 100vh;">
   <article class="card">
     <button (click)="goBack()">Go Back</button>
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" alt="imagen header card" class="card-header">
-      <div class="card-body" [ngStyle]="{ 'background-color': pokemon.backgroundColor }">
+      <div class="card-body" [ngStyle]="{ 'background-color': pokemon.backgroundColor, 'color': pokemon.textColor }">
           <img src="{{pokemon.image}}" alt="imagen" class="card-body-img" >
           <h1 class="card-body-title">
-            {{pokemon.name}}
+            {{pokemon.name }}
           </h1>
-          <!-- <p class="card-body-text">Pokemon name</p> -->
+          <!-- <p class="card-body-text">Some Description</p> -->
       </div>
-      <div class="card-footer" [ngStyle]="{ 'background-color': pokemon.backgroundColor }">
+      <div class="card-footer" [ngStyle]="{ 'background-color': pokemon.backgroundColor, 'color': pokemon.textColor }">
           <div class="card-footer-social">
-              <h3>dato</h3>
-              <p> {{pokemon.backgroundColor}}</p>
+              <h3>ID:</h3>
+              <p> {{pokemon.id}}</p>
           </div>
           <div class="card-footer-social">
-              <h3>Dato</h3>
-              <p>Dato Pokemon</p>
+              <h3>Height:</h3>
+              <p>{{pokemon.height}}</p>
           </div>
           <div class="card-footer-social">
-              <h3>dato</h3>
-              <p>Dato Pokemon</p>
+              <h3>Weight:</h3>
+              <p>{{pokemon.weight}}</p>
           </div>
+          <h2>Stats</h2>
+      <div class="card-footer-social" *ngFor="let stat of pokemon.stats">
+        <label >{{ stat.stat.name }}</label>
+
+      </div>
       </div>
   </article>
 
