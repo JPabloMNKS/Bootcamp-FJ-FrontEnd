@@ -91,5 +91,53 @@ body {
       }
 
   }
-
 }
+
+
+  .card-stats {
+    background-color: white;
+    width: 180px;
+    margin-left: 25px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .card-general {
+    background-color: white;
+    width: 180px;
+    margin-left: 25px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    // display: flex;
+
+
+    button{
+      background-color: yellow;
+      border: 0 solid #e2e8f0;
+      border-radius: 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1;
+      padding: 0.5rem 1.3rem;
+      text-align: center;
+      
+    }
+
+  }
+
+  .show-button{
+    &-button{
+      background-color: fff;
+      width: 500px;
+    }
+  }
+
