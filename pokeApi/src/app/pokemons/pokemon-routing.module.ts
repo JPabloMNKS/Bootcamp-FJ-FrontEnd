@@ -2,35 +2,49 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PokemonProfileComponent } from './pokemon/pokemon-profile/pokemon-profile.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
-// import { PokemonResolver } from './pokemon/pokemon-profile/pokemon.resolver';
+import { PokemonResolver } from './pokemon/pokemon-profile/pokemon.resolver';
+import { PokemonsResolver } from './pokemon-list/pokemons.resolver';
+import { PokemonAddComponent } from './pokemon-add/pokemon-add.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: PokemonListComponent,
+    resolve: {
+      pokemons: PokemonsResolver,
+    },
+  },
+  {
+    path: 'add',
+    component: PokemonAddComponent
+  },
+  {
+    path: ':id',
+    component: PokemonProfileComponent,
+    resolve: {
+      pokemon: PokemonResolver,
+    },
+  },
+
+
+
+
   // {
-  //   path: '',
+  //   path: 'pokedex',
   //   component: PokemonListComponent,
-  //   resolve: {
-  //     pokemons: PokemonResolver
-  //   }
   // },
   // {
-  //   path: ':id',
+  //   path: 'add',
+  //   component: PokemonAddComponent
+  // },
+  // {
+  //   path: 'pokedex/:id',
   //   component: PokemonProfileComponent,
-  //   resolve: {
-  //     pokemon: PokemonResolver
-  //   }
-  // }
+  // },
 
 
 
 
-  {
-    path: 'pokedex',
-    component: PokemonListComponent,
-  },
-  {
-    path: 'pokedex/:id',
-    component: PokemonProfileComponent,
-  },
   // {
   //   path: '',
   //   redirectTo: ' pokedex',
@@ -38,20 +52,10 @@ const routes: Routes = [
   // },
 
 
-  
-
-  // {
-  //   path: ':id',
-  //   component: PokemonProfileComponent,
-  //   resolve:{
-  //     pokemon: PokemonResolver
-  //   }
-  // }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-
 export class PokemonRoutingModule {}

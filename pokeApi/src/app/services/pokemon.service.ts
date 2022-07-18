@@ -39,6 +39,22 @@ export class PokemonService {
     return this.http.get<PokemonDescription>(`${this.API}/pokemon/${id}`);
   }
 
+  getPokemonDetails(id:string){
+    return this.http.get(`${this.API}/pokemon/${id}`);
+  }
+
+  getPokemonGeneration(id: string) {
+    return this.http.get(`${this.API}/generation/${id}`);
+  }
+
+  getPokemonEvolutiontree(id: string) {
+    return this.http.get(`${this.API}/evolution-chain/${id}`)
+  }
+
+  getPokemonImage(id: string) {
+    return this.http.get(`${this.API}/evolution-chain/${id}`)
+  }
+
   getPokemonData(id: string)  {
 
     this.getPokemon(id).subscribe((data) => {

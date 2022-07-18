@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Pokemon } from 'src/app/core/interfaces/pokemon.interface';
 
 @Component({
@@ -10,7 +10,6 @@ import { Pokemon } from 'src/app/core/interfaces/pokemon.interface';
 export class PokemonCardComponent {
   @Input()
   pokemon!: Pokemon;
-  // router: any;
 
   constructor(private router: Router) {}
 

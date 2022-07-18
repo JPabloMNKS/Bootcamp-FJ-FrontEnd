@@ -5,6 +5,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { PokemonCardComponent } from './pokemon-list/pokemon-card.component';
 
@@ -17,6 +18,7 @@ import { PokemonProfileComponent } from './pokemon/pokemon-profile/pokemon-profi
 import { PokemonRoutingModule } from './pokemon-routing.module';
 import { CommonModule } from '@angular/common';
 import { PokemonAddComponent } from './pokemon-add/pokemon-add.component';
+import { PokemonResolver } from './pokemon/pokemon-profile/pokemon.resolver';
 
 @NgModule({
   declarations: [
@@ -27,21 +29,24 @@ import { PokemonAddComponent } from './pokemon-add/pokemon-add.component';
     SearchComponent,
     NotFoundComponent,
     PokemonProfileComponent,
-    PokemonAddComponent
+    PokemonAddComponent,
+
   ],
   imports: [
     PokemonRoutingModule,
+    MatProgressSpinnerModule,
     MatProgressBarModule,
     CommonModule,
-    BrowserModule,
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+
 
   ],
   exports: [
     PokemonListComponent,
+
     PokemonCardComponent,
     HeaderComponent,
     PokemonAddComponent,
@@ -49,7 +54,7 @@ import { PokemonAddComponent } from './pokemon-add/pokemon-add.component';
     SearchComponent,
     NotFoundComponent,
     PokemonProfileComponent,
-    PokemonRoutingModule
+
   ],
   providers: [MatPaginatorModule],
 })

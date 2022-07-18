@@ -1,5 +1,6 @@
 <section>
   <mat-paginator
+    style="z-index: 1; position: relative;"
     [length]="100"
     (page)="paginatorOrganizer($event)"
     [pageSize]="18"
@@ -8,9 +9,9 @@
   >
   </mat-paginator>
 
-  <div>
-    <app-search (searchForAPokemon)="searchPokemon($event)"></app-search>
-    <button class="button-18" (click)="sortByName()">{{sorted ? 'Ordenar por id': 'Ordenar por nombre'}}</button>
+  <div style="z-index: 3; position:relative;">
+    <button id="sort" class="button-pokemon" (click)="sortByName()">{{sorted ? 'Sort by id': 'Sort by name'}}</button>
+    <app-search  id="search" (searchForAPokemon)="searchPokemon($event)"></app-search>
   </div>
   <br />
 

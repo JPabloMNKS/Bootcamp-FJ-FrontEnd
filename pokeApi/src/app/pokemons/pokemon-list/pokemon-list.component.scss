@@ -6,49 +6,36 @@
 }
 section{
   background-color: #424242;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 
-
-/* CSS */
-.button-18 {
+.button-pokemon {
   align-items: center;
   background-color: #0A66C2;
   border: 0;
   border-radius: 100px;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #f6f65e;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 16px;
-  font-weight: 500;
-  justify-content: center;
-  line-height: 20px;
-  max-width: 480px;
   min-height: 32px;
-  overflow: hidden;
-  padding: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  text-align: center;
+  padding: 0px 20px 0px 20px;
 
 }
 
-.button-18:hover,
-.button-18:focus {
+.button-pokemon:hover,
+.button-pokemon:focus {
   background-color: #16437E;
-  color: #ffffff;
+  color: #f6f65e;
 }
 
-.button-18:active {
-  background: #09223b;
-  color: rgb(255, 255, 255, .7);
+#search{
+  float: right;
 }
 
-.button-18:disabled {
-  cursor: not-allowed;
-  background: rgba(0, 0, 0, .08);
-  color: rgba(0, 0, 0, .3);
+#sort{
+  margin-left: 20px;
 }
+
+
+

@@ -11,6 +11,7 @@ import { Pokemon } from 'src/app/core/interfaces/pokemon.interface';
 import { pokemonColorMap } from 'src/app/utils/utils';
 
 import { PokemonService } from '../../services/pokemon.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -35,10 +36,25 @@ export class PokemonListComponent implements OnInit {
 
   sorted: boolean = false;
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(private pokemonService: PokemonService,
+    private router: ActivatedRoute) {}
 
   ngOnInit(): void {
+    const pokemons = this.router.snapshot.data["pokemons"];
+    this.listOfPokemonsToDisplay = pokemons.results.map(this.normalizePokemon, this);
     this.getPokemons();
+  }
+
+  private normalizePokemon(pokemon: {name: string; url: string}) {
+
+    return({
+
+      name: pokemon.name,
+
+      url: pokemon.url
+
+    })
+
   }
 
   sortByName() {

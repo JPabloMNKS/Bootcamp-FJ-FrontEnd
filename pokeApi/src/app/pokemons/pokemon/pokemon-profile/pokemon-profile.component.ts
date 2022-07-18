@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { PokemonService } from '../../../services/pokemon.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Pokemon } from 'src/app/core/interfaces/pokemon.interface';
 import { pokemonColorMap } from 'src/app/utils/utils';
 import { PokemonDescription } from '../../../core/interfaces/pokemon.interface';
@@ -13,19 +13,22 @@ import {ProgressBarMode} from '@angular/material/progress-bar';
   styleUrls: ['./pokemon-profile.component.scss'],
 })
 export class PokemonProfileComponent implements OnInit {
-  id: string = '1';
+  id: string = '1' ;
   fields!: any;
   pokemon!: Pokemon;
+
 
   constructor(
     private location: Location,
     private pokemonService: PokemonService,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private router: Router
+
+  ) { }
 
   ngOnInit(): void {
     this.getPokemonDescription();
-
+    this.router.navigateByUrl(`/pokedex/${this.id}`);
     // this.getPokemon();
   }
 
