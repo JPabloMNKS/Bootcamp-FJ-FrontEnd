@@ -1,60 +1,66 @@
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-  <h2>Basic Information</h2>
+<section
+  style="
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+  "
+>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <h2>Basic Information</h2>
 
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label for="pokemon-name">Name </mat-label>
-      <input
-        type="text"
-        id="pokemon-name"
-        formControlName="pokemonName"
-        matInput
-      />
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label for="pokemon-description">Last Name </mat-label>
-      <input
-        type="text"
-        id="pokemon-description"
-        formControlName="pokemonDescription"
-        matInput
-      />
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label for="pokemon-height">Height </mat-label>
-      <input
-        type="number"
-        id="pokemon-height"
-        formControlName="pokemonHeight"
-        matInput
-      />
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label for="pokemon-weight">Weight </mat-label>
-      <input
-        type="number"
-        id="pokemon-weight"
-        formControlName="pokemonWeight"
-        matInput
-      />
-    </mat-form-field>
-  </div>
-  <div>
-    <select
-      id="pokemon-type"
-      required
-      formControlName="pokemonType"
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label for="pokemon-name">Name </mat-label>
+        <input
+          type="text"
+          id="pokemon-name"
+          formControlName="pokemonName"
+          matInput
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label for="pokemon-description">Last Name </mat-label>
+        <input
+          type="text"
+          id="pokemon-description"
+          formControlName="pokemonDescription"
+          matInput
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label for="pokemon-height">Height </mat-label>
+        <input
+          type="number"
+          id="pokemon-height"
+          formControlName="pokemonHeight"
+          matInput
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label for="pokemon-weight">Weight </mat-label>
+        <input
+          type="number"
+          id="pokemon-weight"
+          formControlName="pokemonWeight"
+          matInput
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <select id="pokemon-type" required formControlName="pokemonType">
+        <option *ngFor="let pow of typesOfPokemon" [value]="pow">
+          {{ pow }}
+        </option>
+      </select>
+    </div>
 
-    >
-      <option *ngFor="let pow of typesOfPokemon" [value]="pow">{{ pow }}</option>
-    </select>
-  </div>
-
-  <button mat-raised-button color="accent" type="submit">Submit</button>
-</form>
+    <button mat-raised-button color="accent" type="submit">Submit</button>
+  </form>
+</section>
