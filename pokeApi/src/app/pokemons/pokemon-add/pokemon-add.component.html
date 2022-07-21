@@ -1,11 +1,4 @@
-<section
-  style="
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    height: 100vh;
-  "
->
+<section class="card">
   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <h2>Basic Information</h2>
 
@@ -13,6 +6,7 @@
       <mat-form-field appearance="fill">
         <mat-label for="pokemon-name">Name </mat-label>
         <input
+          #name
           type="text"
           id="pokemon-name"
           formControlName="pokemonName"
@@ -20,10 +14,15 @@
         />
       </mat-form-field>
     </div>
+    <mat-hint style="font-size: 15px; position: absolute; top: 23%" align="end"
+      >{{ name.value?.length || 0 }}/25</mat-hint
+    >
+
     <div>
       <mat-form-field appearance="fill">
-        <mat-label for="pokemon-description">Last Name </mat-label>
+        <mat-label for="pokemon-description">Description </mat-label>
         <input
+          #description
           type="text"
           id="pokemon-description"
           formControlName="pokemonDescription"
@@ -31,6 +30,10 @@
         />
       </mat-form-field>
     </div>
+    <mat-hint style="font-size: 15px; position: absolute; top: 39%" align="end"
+      >{{ description.value?.length || 0 }}/75</mat-hint
+    >
+
     <div>
       <mat-form-field appearance="fill">
         <mat-label for="pokemon-height">Height </mat-label>
@@ -54,13 +57,22 @@
       </mat-form-field>
     </div>
     <div>
-      <select id="pokemon-type" required formControlName="pokemonType">
-        <option *ngFor="let pow of typesOfPokemon" [value]="pow">
-          {{ pow }}
-        </option>
-      </select>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a type</mat-label>
+        <mat-select id="pokemon-type" required formControlName="pokemonType">
+          <mat-option *ngFor="let pow of typesOfPokemon" [value]="pow">{{
+            pow
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
-
-    <button mat-raised-button color="accent" type="submit">Submit</button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!profileForm.valid"
+    >
+      Submit
+    </button>
   </form>
 </section>

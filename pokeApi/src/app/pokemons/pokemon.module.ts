@@ -6,6 +6,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatSelectModule} from '@angular/material/select';
 
 import { PokemonCardComponent } from './pokemon-list/pokemon-card.component';
 
@@ -19,6 +20,8 @@ import { PokemonRoutingModule } from './pokemon-routing.module';
 import { CommonModule } from '@angular/common';
 import { PokemonAddComponent } from './pokemon-add/pokemon-add.component';
 import { PokemonResolver } from './pokemon/pokemon-profile/pokemon.resolver';
+import {MatButtonModule} from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -40,10 +43,12 @@ import { PokemonResolver } from './pokemon/pokemon-profile/pokemon.resolver';
     FormsModule,
     ReactiveFormsModule,
     MatPaginatorModule,
+    MatSelectModule,
+    MatButtonModule
   ],
   exports: [
     PokemonListComponent,
-
+    MatSelectModule,
     PokemonCardComponent,
     HeaderComponent,
     PokemonAddComponent,
@@ -51,6 +56,7 @@ import { PokemonResolver } from './pokemon/pokemon-profile/pokemon.resolver';
     SearchComponent,
     NotFoundComponent,
     PokemonProfileComponent,
+    MatButtonModule
   ],
   providers: [MatPaginatorModule],
 })
