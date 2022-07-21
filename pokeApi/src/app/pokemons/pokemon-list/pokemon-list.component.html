@@ -1,17 +1,21 @@
 <section>
   <mat-paginator
-    style="z-index: 1; position: relative;  opacity: 0.7;"
+    style="z-index: 1; position: relative; opacity: 0.7"
     [length]="100"
     (page)="paginatorOrganizer($event)"
     [pageSize]="18"
-
     aria-label="Select page"
   >
   </mat-paginator>
 
-  <div style="z-index: 3; position:relative;">
-    <button id="sort" class="button-pokemon" (click)="sortByName()">{{sorted ? 'Sort by id': 'Sort by name'}}</button>
-    <app-search  id="search" (searchForAPokemon)="searchPokemon($event)"></app-search>
+  <div style="z-index: 3; position: relative">
+    <button id="sort" class="button-pokemon" (click)="sortByName()">
+      {{ sorted ? "Sort by id" : "Sort by name" }}
+    </button>
+    <app-search
+      id="search"
+      (searchForAPokemon)="searchPokemon($event)"
+    ></app-search>
   </div>
   <br />
 
@@ -27,4 +31,3 @@
     </ng-template>
   </div>
 </section>
-

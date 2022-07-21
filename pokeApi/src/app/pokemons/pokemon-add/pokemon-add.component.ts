@@ -25,15 +25,9 @@ export class PokemonAddComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(75),
     ]),
-    pokemonHeight: new FormControl('', [
-      Validators.required
-    ]),
-    pokemonWeight: new FormControl('', [
-      Validators.required,
-    ]),
-    pokemonType: new FormControl('', [
-      Validators.required,
-    ]),
+    pokemonHeight: new FormControl('', [Validators.required]),
+    pokemonWeight: new FormControl('', [Validators.required]),
+    pokemonType: new FormControl('', [Validators.required]),
   });
 
   constructor(private fb: FormBuilder) {}

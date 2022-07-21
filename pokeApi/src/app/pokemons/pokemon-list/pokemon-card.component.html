@@ -1,8 +1,10 @@
-<div (click)="goToPokemonProfile()" class="card" [ngStyle]="{ 'background-color': pokemon.backroundColor, opacity: 0.8 }">
+<div
+  (click)="goToPokemonProfile()"
+  class="card"
+  [ngStyle]="{ 'background-color': pokemon.backroundColor, opacity: 0.8 }"
+>
   <img src="{{ pokemon.image }}" />
   <p class="name" [ngStyle]="{ color: pokemon.textColor }">
     # {{ pokemon.id }} {{ pokemon.name }}
   </p>
 </div>
-
-<!-- ngclick routelink -->

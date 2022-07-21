@@ -10,7 +10,7 @@ import { HomeComponent } from '../core/home/home.component';
 const routes: Routes = [
   {
     path: '../',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: '',
@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'add',
-    component: PokemonAddComponent
+    component: PokemonAddComponent,
   },
   {
     path: ':id',
@@ -30,33 +30,6 @@ const routes: Routes = [
       pokemon: PokemonResolver,
     },
   },
-
-
-
-
-  // {
-  //   path: 'pokedex',
-  //   component: PokemonListComponent,
-  // },
-  // {
-  //   path: 'add',
-  //   component: PokemonAddComponent
-  // },
-  // {
-  //   path: 'pokedex/:id',
-  //   component: PokemonProfileComponent,
-  // },
-
-
-
-
-  // {
-  //   path: '',
-  //   redirectTo: ' pokedex',
-  //   pathMatch: 'full',
-  // },
-
-
 ];
 
 @NgModule({

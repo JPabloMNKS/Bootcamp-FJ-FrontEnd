@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { PokemonCardComponent } from './pokemon-list/pokemon-card.component';
 
@@ -30,7 +30,6 @@ import { PokemonResolver } from './pokemon/pokemon-profile/pokemon.resolver';
     NotFoundComponent,
     PokemonProfileComponent,
     PokemonAddComponent,
-
   ],
   imports: [
     PokemonRoutingModule,
@@ -41,8 +40,6 @@ import { PokemonResolver } from './pokemon/pokemon-profile/pokemon.resolver';
     FormsModule,
     ReactiveFormsModule,
     MatPaginatorModule,
-
-
   ],
   exports: [
     PokemonListComponent,
@@ -54,8 +51,7 @@ import { PokemonResolver } from './pokemon/pokemon-profile/pokemon.resolver';
     SearchComponent,
     NotFoundComponent,
     PokemonProfileComponent,
-
   ],
   providers: [MatPaginatorModule],
 })
-export class PokemonModule { }
+export class PokemonModule {}

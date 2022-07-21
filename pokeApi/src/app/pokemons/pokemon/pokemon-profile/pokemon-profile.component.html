@@ -7,7 +7,6 @@
     align-items: center;
     display: flex;
     height: 100vh;
-
   "
 >
   <article class="card">
@@ -20,14 +19,13 @@
       class="card-body"
       [ngStyle]="{
         'background-color': pokemon.backgroundColor,
-        'color': pokemon.textColor
+        color: pokemon.textColor
       }"
     >
       <img src="{{ pokemon.image }}" alt="imagen" class="card-body-img" />
       <h1 class="card-body-title">
         {{ pokemon.name }}
       </h1>
-      <!-- <p class="card-body-text">Some Description</p> -->
     </div>
     <div
       class="card-footer"
@@ -57,16 +55,16 @@
       *ngFor="let stat of pokemon.stats"
       style="margin: 0px 10px 10px 10px; width: 160px"
     >
-      <div style="float: left;">
+      <div style="float: left">
         <label>{{ stat.stat.name }}</label
         ><br />
-        <label> {{ stat.base_stat   | number: "1.0-0" }} / 100</label><br />
+        <label> {{ stat.base_stat | number: "1.0-0" }} / 100</label><br />
       </div>
-      <div style="float: right;">
+      <div style="float: right">
         <mat-spinner
           [diameter]="60"
           mode="determinate"
-          [value]="stat.base_stat "
+          [value]="stat.base_stat"
         ></mat-spinner>
       </div>
 
@@ -74,15 +72,23 @@
     </div>
   </article>
 
-
-  <div style="display: flex; flex-direction: column;">
-
-    <article class="card-general" style="width: 275px; max-height: 200px; margin-bottom: 25px; overflow-y: auto;">
-        <p style="padding: 15px; "> {{pokemon.description?.slice(0,5)}} </p>
+  <div style="display: flex; flex-direction: column">
+    <article
+      class="card-general"
+      style="
+        width: 275px;
+        max-height: 200px;
+        margin-bottom: 25px;
+        overflow-y: auto;
+      "
+    >
+      <p style="padding: 15px">{{ pokemon.description?.slice(0, 5) }}</p>
     </article>
 
-
-    <article class="card-general" style="width: 275px; max-height: 220px; overflow-y: auto;">
+    <article
+      class="card-general"
+      style="width: 275px; max-height: 220px; overflow-y: auto"
+    >
       <div>
         <h3>Type</h3>
         <div
@@ -90,7 +96,9 @@
           style="margin: 10px; width: 125px"
         >
           <div>
-            <button [ngStyle]="{'background-color': type.color}">{{ type.name }}</button>
+            <button [ngStyle]="{ 'background-color': type.color }">
+              {{ type.name }}
+            </button>
           </div>
         </div>
       </div>
@@ -105,10 +113,38 @@
         </ul>
       </div>
     </article>
-
-
-
   </div>
 
+  <div class="card-evolution">
+    <div style="position: absolute">
+      <h2>Evolution</h2>
+    </div>
 
-
+    <div class="evolution">
+      <div
+        class="evolution-card"
+        *ngFor="let evolution of evolutionsData; let last = last"
+      >
+        <div class="evolution-info">
+          <div class="wrapper">
+            <div style="margin: 0%; padding: 0%">
+              <img [src]="evolution.image" />
+            </div>
+            <div class="arrow" [ngClass]="{ 'last-arrow': last }">
+              <img src="../../../../assets/arrow.png" width="30px" alt="" />
+            </div>
+          </div>
+          <p style="margin-left: 4.5rem; font-size: 20px">
+            {{ evolution.species_name }}
+          </p>
+          <div class="details">
+            <div class="info">
+              <p><strong> Minimum level:</strong></p>
+              <p>{{ evolution.min_level ?? "No level" }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

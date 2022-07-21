@@ -11,23 +11,10 @@ export interface PokemonDescription extends Pokemon {
   height: string;
   weight: string;
   type?: string[];
-
-  // stats?: {
-  //   base_stat: number;
-  //   effort: number;
-  //   stat: { name: string };
-  // }[];
-
-  // types: { type: { name: string } }[];
   description?: any[];
   species?: any;
   color?: string;
-
-
   types: any[];
-
-
-
   abilities: any[];
   base_experience: number;
   forms: any[];
@@ -43,23 +30,17 @@ export interface PokemonDescription extends Pokemon {
   sprites: any;
   stats: Stat[];
 
-
   image: string;
-
-
-
-
-
 }
 
-export interface Stat  {
+export interface Stat {
   base_stat: string;
   effort: string;
   stat: {
     name: string;
     url: string;
   };
-};
+}
 
 export interface PokemonStats {
   hp: string;
@@ -79,18 +60,17 @@ export interface FlavorText {
   version: {};
 }
 
-export interface PokemonDetailsApi  {
+export interface PokemonDetailsApi {
   name: string;
   url: string;
-};
+}
 
-
-export interface PokemonSpecies  {
+export interface PokemonSpecies {
   base_happiness: any;
   capture_rate: any;
   color: PokemonDetailsApi;
   egg_groups: [];
-  evolution_chain: {url: string} | null;
+  evolution_chain: { url: string } | null;
   evolves_from_species: PokemonDetailsApi | null;
   flavor_text_entries: FlavorText[];
   form_descriptions: [];
@@ -112,4 +92,11 @@ export interface PokemonSpecies  {
   pokedex_numbers: [];
   shape: {};
   varieties: [];
-};
+}
+
+export interface PokemonEvolutionChain {
+  evolution_details: any[];
+  evolves_to: PokemonEvolutionChain[];
+  is_baby: boolean;
+  species: PokemonDetailsApi;
+}

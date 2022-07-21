@@ -36,32 +36,32 @@ export class PokemonListComponent implements OnInit {
 
   sorted: boolean = false;
 
-  constructor(private pokemonService: PokemonService,
-    private router: ActivatedRoute) {}
+  constructor(
+    private pokemonService: PokemonService,
+    private router: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    const pokemons = this.router.snapshot.data["pokemons"];
-    this.listOfPokemonsToDisplay = pokemons.results.map(this.normalizePokemon, this);
+    const pokemons = this.router.snapshot.data['pokemons'];
+    this.listOfPokemonsToDisplay = pokemons.results.map(
+      this.normalizePokemon,
+      this
+    );
     this.getPokemons();
   }
 
-  private normalizePokemon(pokemon: {name: string; url: string}) {
-
-    return({
-
+  private normalizePokemon(pokemon: { name: string; url: string }) {
+    return {
       name: pokemon.name,
 
-      url: pokemon.url
-
-    })
-
+      url: pokemon.url,
+    };
   }
 
   sortByName() {
-    if (!this.sorted){
+    if (!this.sorted) {
       this.listOfPokemonsToDisplay.sort((a, b) => a.name.localeCompare(b.name));
-    }
-    else{
+    } else {
       this.listOfPokemonsToDisplay.sort((a, b) => a.id - b.id);
     }
     this.sorted = !this.sorted;
