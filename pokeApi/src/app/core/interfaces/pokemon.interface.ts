@@ -17,6 +17,9 @@ export interface PokemonDescription extends Pokemon {
     stat: { name: string };
   }[];
   types: { type: { name: string } }[];
+  description?: any[];
+  species?: any;
+
 }
 
 export interface PokemonStats {
@@ -28,3 +31,11 @@ export interface PokemonStats {
   Speed: string;
 }
 
+export interface FlavorText {
+  flavor_text: string;
+  language: {
+    name: string;
+    url: string;
+  };
+  version: {};
+}

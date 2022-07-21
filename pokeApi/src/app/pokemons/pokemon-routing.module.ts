@@ -5,8 +5,13 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonResolver } from './pokemon/pokemon-profile/pokemon.resolver';
 import { PokemonsResolver } from './pokemon-list/pokemons.resolver';
 import { PokemonAddComponent } from './pokemon-add/pokemon-add.component';
+import { HomeComponent } from '../core/home/home.component';
 
 const routes: Routes = [
+  {
+    path: '../',
+    component: HomeComponent
+  },
   {
     path: '',
     component: PokemonListComponent,

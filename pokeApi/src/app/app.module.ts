@@ -12,10 +12,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HomeComponent } from './core/home/home.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     FormsModule,
     MatProgressBarModule,

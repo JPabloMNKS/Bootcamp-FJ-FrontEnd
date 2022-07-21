@@ -12,6 +12,7 @@
 
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './core/home/home.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pokemons/pokemon.module').then((m) => m.PokemonModule),
   },
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full', component: HomeComponent },
 ];
 
 @NgModule({
