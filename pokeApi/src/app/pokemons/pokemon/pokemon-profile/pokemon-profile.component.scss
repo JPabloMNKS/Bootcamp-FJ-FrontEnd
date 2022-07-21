@@ -3,6 +3,7 @@
   background-color: white;
   width: 326px;
   border-radius: 16px;
+  max-height: 460px;
   overflow: hidden;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 
@@ -65,13 +66,14 @@
 }
 
 .card-section{
-  background-color: whitesmoke;
-  width: 800px;
+  background-color: rgb(55, 53, 53);
+  width: 900px;
   max-height: 500px;
   border-radius: 16px;
   left: 20%;
 	top: 20%;
 	position: fixed;
+  border: solid 2px whitesmoke;
 }
 
 
@@ -92,7 +94,8 @@
 
   .card-general {
     background-color: white;
-    width: 180px;
+    width: 275px;
+    padding: 5px;
     margin-left: 25px;
     border-radius: 16px;
     overflow: hidden;
@@ -131,4 +134,49 @@
 
   }
 
+  ul {
+    padding: 0;
+  }
 
+  li {
+    list-style: none;
+    position: relative;
+    padding: 5px 0px 0px 45px;
+  }
+
+
+  ul li:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+    background-image: url("../../../../assets/pokeball-icon.png");
+  }
+
+  /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

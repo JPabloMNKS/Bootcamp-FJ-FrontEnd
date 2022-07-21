@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Pokemon, PokemonDescription } from '../core/interfaces/pokemon.interface';
+import { Pokemon, PokemonDescription, PokemonSpecies } from '../core/interfaces/pokemon.interface';
 import { Observable } from 'rxjs/internal/Observable';
 import { pokemonColorMap } from '../utils/utils';
-import { BehaviorSubject } from 'rxjs';
-import { shareReplay, switchMap } from 'rxjs/operators';
+import { BehaviorSubject, forkJoin } from 'rxjs';
+import { map, shareReplay, switchMap } from 'rxjs/operators';
+import { pokemonTypeColorMap } from '../utils/pokemonColorHash';
 
 @Injectable({
   providedIn: 'root',
@@ -39,8 +40,8 @@ export class PokemonService {
     return this.http.get<PokemonDescription>(`${this.API}/pokemon/${id}`);
   }
 
-  getPokemonDetails(id:string){
-    return this.http.get(`${this.API}/pokemon/${id}`);
+  getPokemonDetails(id: string) {
+    return this.http.get(`${this.API}/pokemon/${id}`) as Observable<PokemonDescription>;
   }
 
   getPokemonGeneration(id: string) {
@@ -84,4 +85,55 @@ export class PokemonService {
       return pokemon;
     });
   }
+
+  getPokemonSpecies(id: string) {
+    return this.http
+      .get<PokemonSpecies>(`${this.API}/pokemon-species/${id}`)
+      .pipe(
+        map((data) => {
+          return {
+            ...data,
+            image: this.getPokemonImageUri(data.id),
+          };
+        })
+      ) as Observable<PokemonSpecies>;
+  }
+
+
+  getPokemonInformation(id: string) {
+    const species = this.getPokemonSpecies(id);
+    const details = this.getPokemonDetails(id);
+    return forkJoin([species, details]).pipe(
+      map(([species, details]) => {
+        const updatedPokemon = {
+          ...details,
+          types: details.types.map((data) => {
+            return {
+              name: data.type.name,
+              color: pokemonTypeColorMap[data.type.name],
+            };
+          }),
+          evolution_chain: species.evolution_chain,
+          description: this.getDescription(species),
+          image: this.getPokemonImageUri(Number(id)),
+          color: pokemonColorMap[id],
+        };
+        return updatedPokemon;
+      })
+    ) as unknown as Observable<PokemonDescription>;
+  }
+
+  getDescription(species: PokemonSpecies) {
+    let description: Iterable<any> | any | string | number = [];
+    species.flavor_text_entries
+      .filter((description) => description.language.name === 'en')
+      .map((description) =>
+        description.flavor_text.replace('\n', ' ').replace('\f', ' ')
+      )
+      .forEach((des, index) => {
+        description[index] = des;
+      });
+    return [...new Set(description)];
+  }
+
 }

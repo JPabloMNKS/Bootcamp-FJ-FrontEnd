@@ -7,6 +7,7 @@
     align-items: center;
     display: flex;
     height: 100vh;
+
   "
 >
   <article class="card">
@@ -19,7 +20,7 @@
       class="card-body"
       [ngStyle]="{
         'background-color': pokemon.backgroundColor,
-        color: pokemon.textColor
+        'color': pokemon.textColor
       }"
     >
       <img src="{{ pokemon.image }}" alt="imagen" class="card-body-img" />
@@ -59,7 +60,7 @@
       <div style="float: left;">
         <label>{{ stat.stat.name }}</label
         ><br />
-        <label> {{ stat.base_stat  | number: "1.0-0" }} / 100</label><br />
+        <label> {{ stat.base_stat   | number: "1.0-0" }} / 100</label><br />
       </div>
       <div style="float: right;">
         <mat-spinner
@@ -73,41 +74,41 @@
     </div>
   </article>
 
-  <article class="card-general">
-    <div>
-      <h3>Type</h3>
-      <div
-        *ngFor="let type of pokemon.types"
-        style="margin: 10px; width: 125px"
-      >
-        <div>
-          <button>{{ type.type.name }}</button>
+
+  <div style="display: flex; flex-direction: column;">
+
+    <article class="card-general" style="width: 275px; max-height: 200px; margin-bottom: 25px; overflow-y: auto;">
+        <p style="padding: 15px; "> {{pokemon.description?.slice(0,5)}} </p>
+    </article>
+
+
+    <article class="card-general" style="width: 275px; max-height: 220px; overflow-y: auto;">
+      <div>
+        <h3>Type</h3>
+        <div
+          *ngFor="let type of pokemon.types"
+          style="margin: 10px; width: 125px"
+        >
+          <div>
+            <button [ngStyle]="{'background-color': type.color}">{{ type.name }}</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div>
-      <h3>abilities</h3>
-      <div
-        *ngFor="let ability of pokemon.abilities"
-        style="margin: 10px; width: 125px"
-      >
-        <button>{{ ability.ability.name }}</button>
-      </div>
-    </div>
-  </article>
-
-  <!-- <article class="card-moves">
-    <h2>Moves</h2>
-    <div style="height: 350px; overflow-y: scroll; ">
-
-      <div
-        *ngFor="let move of pokemon.moves"
-        style="margin: 10px; width: 125px"
-      >
-        <label>{{ move.move.name }}</label
+      <div>
+        <h3>abilities</h3>
+        <ul
+          *ngFor="let ability of pokemon.abilities"
+          style="margin: 10px; width: 125px"
         >
+          <li>{{ ability.ability.name }}</li>
+        </ul>
       </div>
-    </div>
-  </article> -->
-</section>
+    </article>
+
+
+
+  </div>
+
+
+

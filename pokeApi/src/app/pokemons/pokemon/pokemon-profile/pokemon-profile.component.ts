@@ -15,7 +15,8 @@ import {ProgressBarMode} from '@angular/material/progress-bar';
 export class PokemonProfileComponent implements OnInit {
   id: string = '1' ;
   fields!: any;
-  pokemon!: Pokemon;
+  pokemon!: PokemonDescription;
+  pokemonProfile!: PokemonDescription;
 
 
   constructor(
@@ -27,7 +28,14 @@ export class PokemonProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // this.route.data.subscribe((data) => {
+    //   this.pokemonProfile = data['pokemon']
+    // })
+
+
     this.getPokemonDescription();
+
+
     this.router.navigateByUrl(`/pokedex/${this.id}`);
     // this.getPokemon();
   }
@@ -51,7 +59,7 @@ export class PokemonProfileComponent implements OnInit {
 
   getPokemonDescription(){
     this.id = this.route.snapshot.paramMap.get('id') || '1';
-    this.pokemonService.getPokemonDescription(this.id).subscribe((pokemonData: PokemonDescription) => {
+    this.pokemonService.getPokemonInformation(this.id).subscribe((pokemonData: PokemonDescription) => {
       this.pokemon = pokemonData;
       const pokemonID = parseInt(this.id);
       const backgroundColor = pokemonColorMap[pokemonID];
@@ -63,7 +71,7 @@ export class PokemonProfileComponent implements OnInit {
       this.pokemon.weight = pokemonData.weight;
       this.pokemon.stats = pokemonData.stats;
 
-      console.log('Test  2 dsa dsa ', this.pokemon );
+      console.log('Test  2 dsa dsa ', this.pokemon.abilities );
 
     });
   }
